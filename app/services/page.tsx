@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 import { 
   Truck, 
   Sparkles, 
@@ -7,7 +8,8 @@ import {
   CalendarCheck, 
   Zap, 
   Phone,
-  CheckCircle2 
+  CheckCircle2,
+  ArrowRight
 } from "lucide-react";
 
 const services = [
@@ -38,56 +40,113 @@ const services = [
   },
 ];
 
+const results = [
+  {
+    title: "Kitchen Deep Clean",
+    before: "/before-kitchen.jpg",
+    after: "/after-kitchen.jpg",
+    tag: "Deep Clean"
+  },
+  {
+    title: "Floor Restoration",
+    before: "/before-floor.jpg",
+    after: "/after-floor.jpg",
+    tag: "Post-Construction"
+  },
+  {
+    title: "Bathroom Refresh",
+    before: "/before-bath.jpg",
+    after: "/after-bath.jpg",
+    tag: "Move-Out"
+  },
+];
+
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Header */}
-      <section className="bg-emerald-950 py-20 text-center text-white">
+      {/* --- HEADER --- */}
+      <section className="bg-emerald-950 py-16 text-center text-white">
         <div className="container mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Services & Results</h1>
-          <p className="text-emerald-100/70 text-lg max-w-xl mx-auto">
-            Choose the perfect eco-friendly cleaning plan for your home.
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Services & Results</h1>
+          <p className="text-emerald-100/70 text-lg max-w-xl mx-auto font-medium">
+            Professional eco-friendly cleaning tailored to your needs.
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* --- SERVICES GRID --- */}
       <section className="py-20 container mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="p-8 border border-emerald-50 rounded-3xl bg-white shadow-sm hover:shadow-2xl hover:shadow-emerald-100/50 transition-all duration-300 group flex flex-col h-full border-b-4 border-b-transparent hover:border-b-emerald-500"
+              className="p-8 border border-emerald-50 rounded-3xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full group"
             >
-              <div className="mb-6 w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+              <div className="mb-6 w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all">
                 {service.icon}
               </div>
-              
               <h3 className="text-2xl font-bold text-emerald-900 mb-3">{service.title}</h3>
               <p className="text-emerald-800/70 leading-relaxed mb-8 flex-grow">{service.desc}</p>
               
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-2 text-sm font-medium text-emerald-700">
-                  <CheckCircle2 size={18} className="text-emerald-500" /> 100% Organic Products
-                </div>
-                <div className="flex items-center gap-2 text-sm font-medium text-emerald-700">
-                  <CheckCircle2 size={18} className="text-emerald-500" /> Pet & Kid Friendly
-                </div>
-              </div>
-
-              {/* CARD BUTTON */}
               <a 
                 href="tel:+19145641364" 
-                className="w-full py-4 rounded-2xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-all shadow-md flex items-center justify-center gap-2 active:scale-95"
+                className="w-full py-3.5 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 active:scale-95 shadow-md"
               >
                 <Phone size={18} fill="currentColor" />
-                Call to Schedule
+                Book Now
               </a>
             </div>
           ))}
         </div>
+
+        {/* --- BEFORE & AFTER GALLERY --- */}
+        <div className="border-t border-emerald-100 pt-20">
+          <div className="flex flex-col items-center text-center mb-12">
+            <div className="flex items-center gap-2 text-emerald-600 font-bold uppercase tracking-widest text-xs mb-3">
+              <Sparkles size={16} />
+              <span>Visual Proof</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-emerald-950">See The Difference</h2>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {results.map((item, index) => (
+              <div key={index} className="flex flex-col group">
+                <div className="relative h-72 md:h-80 rounded-3xl overflow-hidden shadow-lg flex">
+                  {/* Before Side */}
+                  <div className="relative w-1/2 h-full border-r border-white/40">
+                    <Image src={item.before} alt="Before" fill className="object-cover grayscale-[40%]" />
+                    <div className="absolute top-3 left-3 bg-black/40 backdrop-blur-md text-white text-[9px] px-2 py-1 rounded font-bold uppercase tracking-wider">Before</div>
+                  </div>
+                  {/* After Side */}
+                  <div className="relative w-1/2 h-full">
+                    <Image src={item.after} alt="After" fill className="object-cover" />
+                    <div className="absolute top-3 right-3 bg-emerald-600 text-white text-[9px] px-2 py-1 rounded font-bold uppercase tracking-wider shadow-md">After</div>
+                  </div>
+                </div>
+                <div className="mt-4 flex justify-between items-center px-2">
+                  <span className="font-bold text-emerald-900">{item.title}</span>
+                  <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded uppercase">{item.tag}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- FINAL CALL TO ACTION --- */}
+      <section className="bg-emerald-50 py-16 mb-20 mx-6 rounded-[3rem] text-center border border-emerald-100">
+        <h2 className="text-3xl font-bold text-emerald-950 mb-4">Ready for a cleaner home?</h2>
+        <p className="text-emerald-800/70 mb-8 max-w-md mx-auto font-medium">Join our happy Westchester clients and experience the EcoGreen difference today.</p>
+        <a 
+          href="tel:+19145641364" 
+          className="inline-flex items-center gap-3 bg-emerald-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-emerald-700 transition-all shadow-xl active:scale-95"
+        >
+          <Phone size={22} fill="currentColor" />
+          Call 914-564-1364
+        </a>
       </section>
 
       <Footer />
