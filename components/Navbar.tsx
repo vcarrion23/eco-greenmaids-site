@@ -5,43 +5,46 @@ import { Phone } from "lucide-react";
 export default function Navbar() {
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="w-full px-6 md:px-12 py-2 flex justify-between items-center">
         
-        {/* LOGO - Now using the transparent version */}
+        {/* LOGO SECTION - Left Aligned */}
         <Link href="/" className="flex items-center gap-3">
           <Image 
-            src="/logo-transparent.png" // Make sure this matches your new filename!
+            src="/logo-brown.png" 
             alt="EcoGreenMaids Logo" 
-            width={80} 
-            height={80} 
-            className="object-contain" // Shows the natural shape of the logo
+            width={90} 
+            height={90} 
+            className="object-contain" 
             priority
           />
-          {/* Brand Name Text (Optional - keep or remove) */}
-          <span className="text-2xl font-bold text-eco-800 tracking-tight hidden sm:block">
-            Eco<span className="text-eco-600">GreenMaids</span>
-          </span>
         </Link>
 
-        {/* MENU LINKS */}
+        {/* MENU LINKS & CONTACT - Right Aligned */}
         <div className="hidden md:flex gap-8 items-center">
-          <Link href="/" className="text-gray-600 hover:text-eco-600 font-medium transition">
+          <Link href="/" className="text-gray-600 hover:text-emerald-600 font-medium transition">
             Home
           </Link>
-          <Link href="/about" className="text-gray-600 hover:text-eco-600 font-medium transition">
+          <Link href="/about" className="text-gray-600 hover:text-emerald-600 font-medium transition">
             About Us
           </Link>
-          <Link href="/services" className="text-gray-600 hover:text-eco-600 font-medium transition">
+          <Link href="/services" className="text-gray-600 hover:text-emerald-600 font-medium transition">
             Services & Results
           </Link>
           
+          {/* CALL BUTTON - Click to Call */}
           <a 
-            href="https://wa.me/15551234567" 
-            target="_blank" 
-            className="flex items-center gap-2 bg-eco-600 text-white px-5 py-2.5 rounded-full hover:bg-eco-800 transition shadow-md font-medium"
+            href="tel:+19145641364" 
+            className="flex items-center gap-2 bg-emerald-600 text-white px-6 py-2.5 rounded-full hover:bg-emerald-700 transition-all shadow-lg hover:shadow-emerald-200/50 font-bold active:scale-95 whitespace-nowrap"
           >
-            <Phone size={18} />
-            <span>Book Now</span>
+            <Phone size={18} fill="currentColor" />
+            <span>914-564-1364</span>
+          </a>
+        </div>
+
+        {/* MOBILE VIEW - Just the button for small screens */}
+        <div className="md:hidden">
+          <a href="tel:+19145641364" className="text-emerald-600 p-2 block">
+            <Phone size={28} fill="currentColor" />
           </a>
         </div>
 
