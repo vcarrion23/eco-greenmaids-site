@@ -8,8 +8,7 @@ import {
   CalendarCheck, 
   Zap, 
   Phone,
-  CheckCircle2,
-  ArrowRight
+  CheckCircle2
 } from "lucide-react";
 
 const services = [
@@ -40,23 +39,24 @@ const services = [
   },
 ];
 
+// Mapped exactly to your public folder filenames
 const results = [
   {
-    title: "Kitchen Deep Clean",
-    before: "/before-kitchen.jpg",
-    after: "/after-kitchen.jpg",
+    title: "Kitchen Transformation",
+    before: "/kitchenbefore.png",
+    after: "/kicthenafter.png", // matches your 'kicthen' typo in public folder
     tag: "Deep Clean"
   },
   {
     title: "Floor Restoration",
-    before: "/before-floor.jpg",
-    after: "/after-floor.jpg",
+    before: "/floorbefore.png",
+    after: "/floorafter.png",
     tag: "Post-Construction"
   },
   {
-    title: "Bathroom Refresh",
-    before: "/before-bath.jpg",
-    after: "/after-bath.jpg",
+    title: "Bathroom Deep Scrub",
+    before: "/bathroombefore.png",
+    after: "/bathroomafter.png",
     tag: "Move-Out"
   },
 ];
@@ -106,7 +106,7 @@ export default function ServicesPage() {
           <div className="flex flex-col items-center text-center mb-12">
             <div className="flex items-center gap-2 text-emerald-600 font-bold uppercase tracking-widest text-xs mb-3">
               <Sparkles size={16} />
-              <span>Visual Proof</span>
+              <span>Real Work</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-emerald-950">See The Difference</h2>
           </div>
@@ -117,12 +117,24 @@ export default function ServicesPage() {
                 <div className="relative h-72 md:h-80 rounded-3xl overflow-hidden shadow-lg flex">
                   {/* Before Side */}
                   <div className="relative w-1/2 h-full border-r border-white/40">
-                    <Image src={item.before} alt="Before" fill className="object-cover grayscale-[40%]" />
+                    <Image 
+                        src={item.before} 
+                        alt="Before" 
+                        fill 
+                        className="object-cover grayscale-[30%]" 
+                        unoptimized
+                    />
                     <div className="absolute top-3 left-3 bg-black/40 backdrop-blur-md text-white text-[9px] px-2 py-1 rounded font-bold uppercase tracking-wider">Before</div>
                   </div>
                   {/* After Side */}
                   <div className="relative w-1/2 h-full">
-                    <Image src={item.after} alt="After" fill className="object-cover" />
+                    <Image 
+                        src={item.after} 
+                        alt="After" 
+                        fill 
+                        className="object-cover" 
+                        unoptimized
+                    />
                     <div className="absolute top-3 right-3 bg-emerald-600 text-white text-[9px] px-2 py-1 rounded font-bold uppercase tracking-wider shadow-md">After</div>
                   </div>
                 </div>
@@ -138,14 +150,13 @@ export default function ServicesPage() {
 
       {/* --- FINAL CALL TO ACTION --- */}
       <section className="bg-emerald-50 py-16 mb-20 mx-6 rounded-[3rem] text-center border border-emerald-100">
-        <h2 className="text-3xl font-bold text-emerald-950 mb-4">Ready for a cleaner home?</h2>
-        <p className="text-emerald-800/70 mb-8 max-w-md mx-auto font-medium">Join our happy Westchester clients and experience the EcoGreen difference today.</p>
+        <h2 className="text-3xl font-bold text-emerald-950 mb-4">Ready for your transformation?</h2>
         <a 
           href="tel:+19145641364" 
           className="inline-flex items-center gap-3 bg-emerald-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-emerald-700 transition-all shadow-xl active:scale-95"
         >
           <Phone size={22} fill="currentColor" />
-          Call 914-564-1364
+          Call to Schedule
         </a>
       </section>
 
