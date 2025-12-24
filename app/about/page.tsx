@@ -1,91 +1,86 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FadeIn from "@/components/FadeIn"; 
-import Image from "next/image"; // <--- Import Image component
-import { Leaf, Heart, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { CheckCircle2, Sparkles, ShieldCheck } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <main className="bg-white min-h-screen flex flex-col">
+    <main className="min-h-screen bg-white">
       <Navbar />
 
-      {/* 1. Header Section */}
-      <section className="bg-eco-100 py-20 text-center">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <h1 className="text-4xl md:text-5xl font-bold text-eco-800 mb-6">Cleaning with a Conscience</h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We believe a clean home shouldn't come at the cost of your health or the environment.
-            </p>
-          </FadeIn>
+      {/* --- HEADER SECTION --- */}
+      <section className="bg-emerald-950 py-16 text-center text-white">
+        <div className="container mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight italic">Our Mission</h1>
+          <p className="text-emerald-100/70 text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+            Delivering premium, clinical-grade cleaning for Westchester homes using 100% organic methods.
+          </p>
         </div>
       </section>
 
-      {/* 2. Our Story / Mission */}
-      <section className="py-20 container mx-auto px-6">
-        <FadeIn delay={0.2}>
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            {/* Text Side */}
-            <div className="flex-1">
-              <h2 className="text-3xl font-bold text-eco-800 mb-6">Our Mission</h2>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                EcoGreenMaids started with a simple idea: Harsh chemicals don't belong in the places where we eat, sleep, and play. 
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Traditional cleaning supplies often leave behind toxic residues that can harm pets and children. We set out to prove that 
-                you can get a sparkling, hotel-quality clean using 100% plant-based, biodegradable products.
-              </p>
-            </div>
+      {/* --- CONTENT SECTION --- */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             
-            {/* 3. IMAGE SECTION (Updated to .png) */}
-            <div className="flex-1 relative h-64 md:h-96 w-full">
-              <Image 
-                src="/aboutus.png"  // <--- CHANGED TO .PNG
-                alt="Our eco-friendly cleaning team"
-                fill 
-                className="object-cover rounded-2xl shadow-lg"
-              />
+            {/* THE IMAGE CONTAINER - Made smaller and adjusted for better fit */}
+            <div className="flex justify-center items-center">
+              <div className="relative w-full max-w-md h-[300px] md:h-[400px] rounded-[2rem] overflow-hidden shadow-xl border-4 border-emerald-50 bg-white">
+                <Image 
+                  src="/ecogreen-aboutus.png" 
+                  alt="EcoGreenMaids Professional Service"
+                  fill
+                  className="object-contain p-4" // 'object-contain' ensures the whole image fits in the box
+                  priority
+                  unoptimized
+                />
+                
+                {/* Compact Overlay Badge */}
+                <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-4 rounded-2xl shadow-lg flex items-center gap-3 border border-emerald-100">
+                  <div className="bg-emerald-600 p-2 rounded-xl text-white">
+                    <ShieldCheck size={20} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-emerald-950">Fully Insured</p>
+                    <p className="text-[10px] text-emerald-800/60 font-bold uppercase">Professional</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* TEXT CONTENT - Stays the same size */}
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-2 text-emerald-600 font-bold uppercase tracking-widest text-xs">
+                <Sparkles size={16} />
+                <span>Premium Quality Service</span>
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl font-extrabold text-emerald-950 tracking-tight">
+                Your Health, Your Home, <br/>
+                <span className="text-emerald-600 italic">Our Expertise.</span>
+              </h2>
+
+              <p className="text-emerald-800/80 leading-relaxed text-lg font-medium">
+                At EcoGreenMaids, we believe a clean home is the foundation of a healthy life. We provide high-detail service utilizing non-toxic, pet-safe, and kid-safe supplies. 
+              </p>
+
+              {/* USP List */}
+              <div className="grid gap-4 mt-2">
+                {[
+                  "Trained & Background-Checked Cleaners",
+                  "HEPA-Filtration Vacuums",
+                  "100% Organic Cleaning Solutions",
+                  "100% Satisfaction Guarantee"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <CheckCircle2 size={18} className="text-emerald-500 shrink-0" />
+                    <span className="font-bold text-emerald-900/80 text-sm md:text-base">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
-        </FadeIn>
-      </section>
-
-      {/* 3. Why Choose Eco? (The 3 Icons) */}
-      <section className="bg-eco-50 py-20">
-        <div className="container mx-auto px-6">
-          <FadeIn delay={0.4}>
-            <h2 className="text-3xl font-bold text-center text-eco-800 mb-16">Why Go Green?</h2>
-            
-            <div className="grid md:grid-cols-3 gap-10">
-              {/* Benefit 1 */}
-              <div className="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <div className="w-16 h-16 bg-eco-100 text-eco-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Leaf size={32} />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-eco-800">Non-Toxic & Organic</h3>
-                <p className="text-gray-600">No bleach, no ammonia, no artificial fragrances. Just powerful plant-based ingredients.</p>
-              </div>
-
-              {/* Benefit 2 */}
-              <div className="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <div className="w-16 h-16 bg-eco-100 text-eco-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Heart size={32} />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-eco-800">Safe for Pets & Kids</h3>
-                <p className="text-gray-600">Your little ones (and furry ones) spend the most time on the floor. We keep it safe.</p>
-              </div>
-
-              {/* Benefit 3 */}
-              <div className="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-                <div className="w-16 h-16 bg-eco-100 text-eco-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <ShieldCheck size={32} />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-eco-800">Satisfaction Guaranteed</h3>
-                <p className="text-gray-600">Eco-friendly doesn't mean weak. We guarantee a spotless shine or we re-clean for free.</p>
-              </div>
-            </div>
-          </FadeIn>
         </div>
       </section>
 
