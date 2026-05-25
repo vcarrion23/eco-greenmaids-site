@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Sparkles, CheckCircle2 } from "lucide-react";
+import { MessageSquare, Sparkles, CheckCircle2 } from "lucide-react";
 
 export default function Home() {
   return (
@@ -37,12 +37,15 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mb-10">
+            {/* PRIMARY WHATSAPP CALL TO ACTION */}
             <a 
-              href="tel:+19145641364" 
+              href="https://wa.me/19145641364?text=Hi%20EcoGreenMaids!%20I'd%20like%20to%20get%20a%20cleaning%20quote." 
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-emerald-600 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-emerald-700 transition-all shadow-xl flex items-center justify-center gap-3 active:scale-95"
             >
-              <Phone size={20} fill="currentColor" />
-              Book a Clean
+              <MessageSquare size={20} fill="currentColor" />
+              Book via WhatsApp
             </a>
 
             <Link 

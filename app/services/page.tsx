@@ -7,7 +7,7 @@ import {
   Hammer, 
   CalendarCheck, 
   Zap, 
-  Phone,
+  MessageSquare,
   CheckCircle2
 } from "lucide-react";
 
@@ -69,7 +69,7 @@ export default function ServicesPage() {
       {/* --- HEADER --- */}
       <section className="bg-emerald-950 py-16 text-center text-white">
         <div className="container mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Services & Results</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight italic">Services & Results</h1>
           <p className="text-emerald-100/70 text-lg max-w-xl mx-auto font-medium">
             Professional eco-friendly cleaning tailored to your needs.
           </p>
@@ -90,12 +90,15 @@ export default function ServicesPage() {
               <h3 className="text-2xl font-bold text-emerald-900 mb-3">{service.title}</h3>
               <p className="text-emerald-800/70 leading-relaxed mb-8 flex-grow">{service.desc}</p>
               
+              {/* Individual WhatsApp Button Per Service */}
               <a 
-                href="tel:+19145641364" 
+                href={`https://wa.me/19145641364?text=Hi%20EcoGreenMaids!%20I'd%20like%20to%20book%20a%20${encodeURIComponent(service.title)}%20cleaning.`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-3.5 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 active:scale-95 shadow-md"
               >
-                <Phone size={18} fill="currentColor" />
-                Book Now
+                <MessageSquare size={18} fill="currentColor" />
+                Text to Book
               </a>
             </div>
           ))}
@@ -108,7 +111,7 @@ export default function ServicesPage() {
               <Sparkles size={16} />
               <span>Real Work</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-emerald-950">See The Difference</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-emerald-950 tracking-tight">See The Difference</h2>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
@@ -149,14 +152,17 @@ export default function ServicesPage() {
       </section>
 
       {/* --- FINAL CALL TO ACTION --- */}
-      <section className="bg-emerald-50 py-16 mb-20 mx-6 rounded-[3rem] text-center border border-emerald-100">
-        <h2 className="text-3xl font-bold text-emerald-950 mb-4">Ready for your transformation?</h2>
+      <section className="bg-emerald-50 py-16 mb-20 mx-6 rounded-[3rem] text-center border border-emerald-100 flex flex-col items-center justify-center p-6">
+        <h2 className="text-3xl font-bold text-emerald-950 mb-2 tracking-tight">Ready for your transformation?</h2>
+        <p className="text-emerald-800/60 font-semibold mb-6 max-w-sm text-sm">Send us a text with your timeline or home details for an instant quote.</p>
         <a 
-          href="tel:+19145641364" 
+          href="https://wa.me/19145641364?text=Hi%20EcoGreenMaids!%20I'm%20ready%20to%20schedule%20a%20clean%20and%20transform%20my%20space." 
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-3 bg-emerald-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-emerald-700 transition-all shadow-xl active:scale-95"
         >
-          <Phone size={22} fill="currentColor" />
-          Call to Schedule
+          <MessageSquare size={22} fill="currentColor" />
+          Message to Schedule
         </a>
       </section>
 
