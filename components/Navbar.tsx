@@ -64,9 +64,9 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* --- DIRECT PHONE CTA --- */}
+          {/* --- DIRECT TEXT MESSAGE CTA --- */}
           <a 
-            href="tel:19145641364" 
+            href="sms:+19145641364" 
             className="flex items-center gap-1.5 bg-emerald-600 text-white px-3.5 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm hover:bg-emerald-700 transition-all hover:shadow-lg hover:shadow-emerald-200 active:scale-95 shadow-md border border-emerald-500/20 cursor-none shrink-0"
           >
             <MessageSquare size={14} fill="currentColor" />
@@ -155,7 +155,7 @@ export default function Navbar() {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 mt-4 max-w-md">
-                  <a href="tel:19145641364" className="flex-1 py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-center flex items-center justify-center gap-2.5 shadow-xl cursor-none">
+                  <a href="sms:+19145641364" className="flex-1 py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-center flex items-center justify-center gap-2.5 shadow-xl cursor-none">
                     <MessageSquare size={20} fill="currentColor" /> Text Us Directly
                   </a>
                   <a href="https://www.instagram.com/ecogreenmaids/" target="_blank" rel="noopener noreferrer" className="flex-1 py-4 px-6 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-center flex items-center justify-center gap-2.5 cursor-none">

@@ -103,7 +103,7 @@ export default function ServicesPage() {
                 Send over your home layout constraints via text, and we will set up a clear quote package immediately.
               </p>
               <div className="w-full sm:w-auto">
-                <a href="tel:19145641364" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-900/10 transition-all active:scale-95 cursor-none text-base">
+                <a href="sms:+19145641364" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-900/10 transition-all active:scale-95 cursor-none text-base">
                   <MessageSquare size={18} fill="currentColor" /> Text to Coordinate Now
                 </a>
               </div>

@@ -20,7 +20,6 @@ export default function HomePage() {
             <Sparkles size={14} className="text-emerald-400" />
             <span>Premium Organic Home Sanitization</span>
           </div>
-          {/* HEADLINE UPDATED HERE */}
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter leading-none mb-6">
             A Spotless Home. <br />
             <span className="text-emerald-400 italic font-medium">Expertly Executed.</span>
@@ -29,7 +28,7 @@ export default function HomePage() {
             Clinical-grade, high-detail cleaning tailored for busy Westchester families. Safe for kids, pets, and the planet.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto">
-            <a href="tel:19145641364" className="w-full sm:flex-1 py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-center flex items-center justify-center gap-2.5 shadow-xl shadow-emerald-900/20 transition-all active:scale-95 cursor-none">
+            <a href="sms:+19145641364" className="w-full sm:flex-1 py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-center flex items-center justify-center gap-2.5 shadow-xl shadow-emerald-900/20 transition-all active:scale-95 cursor-none">
               <MessageSquare size={18} fill="currentColor" /> Text Us Directly
             </a>
           </div>
@@ -108,7 +107,7 @@ export default function HomePage() {
               </div>
 
               <div className="w-full md:w-auto shrink-0">
-                <a href="tel:19145641364" className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-extrabold px-8 py-4 rounded-2xl shadow-xl transition-all active:scale-95 cursor-none whitespace-nowrap text-base">
+                <a href="sms:+19145641364" className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-extrabold px-8 py-4 rounded-2xl shadow-xl transition-all active:scale-95 cursor-none whitespace-nowrap text-base">
                   <MessageSquare size={18} fill="currentColor" /> Text to Book Now
                 </a>
               </div>
