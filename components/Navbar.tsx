@@ -2,31 +2,41 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { MessageSquare, X, Instagram, Sparkles, CheckCircle2 } from "lucide-react";
+import { MessageSquare, X, Instagram, Sparkles, CheckCircle2, Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isCinematicOpen, setIsCinematicOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const openOverlay = () => {
-    setIsOpen(true);
+  const openCinematic = () => {
+    setIsCinematicOpen(true);
+    setIsMobileMenuOpen(false); // Close mobile nav if video opens
     window.dispatchEvent(new Event("egmOverlayOpen"));
   };
 
-  const closeOverlay = () => {
-    setIsOpen(false);
+  const closeCinematic = () => {
+    setIsCinematicOpen(false);
     window.dispatchEvent(new Event("egmOverlayClose"));
   };
 
   return (
     <>
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
-        {/* Changed px-6 to px-4 on mobile to maximize physical horizontal screen space */}
         <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between gap-2">
           
+          {/* --- MOBILE MENU HAMBURGER BUTTON --- */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 text-emerald-950 hover:bg-emerald-50 rounded-xl md:hidden cursor-none"
+            aria-label="Toggle Navigation Menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
           {/* --- BRAND NAME BUTTON --- */}
           <button 
-            onClick={openOverlay} 
+            onClick={openCinematic} 
             className="group flex flex-col items-start relative overflow-hidden py-1 text-left focus:outline-none cursor-none shrink"
           >
             <motion.div 
@@ -34,7 +44,6 @@ export default function Navbar() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Scaled text down slightly on mobile (text-xl instead of text-2xl) so it never clips */}
               <span className="text-xl md:text-3xl font-black tracking-tighter italic 
                 bg-gradient-to-r from-emerald-900 via-emerald-600 to-emerald-800 
                 bg-clip-text text-transparent 
@@ -48,7 +57,7 @@ export default function Navbar() {
             <div className="absolute -bottom-0.5 left-0 h-[3px] w-0 bg-gradient-to-r from-emerald-400 to-emerald-600 group-hover:w-full transition-all duration-500 rounded-full" />
           </button>
 
-          {/* --- NAVIGATION LINKS --- */}
+          {/* --- DESKTOP NAVIGATION LINKS --- */}
           <div className="hidden md:flex items-center gap-8 font-bold text-emerald-950/80">
             <Link href="/" className="hover:text-emerald-600 transition-colors relative group cursor-none">
               Home
@@ -72,17 +81,58 @@ export default function Navbar() {
             className="flex items-center gap-1.5 bg-emerald-600 text-white px-3.5 py-2 md:px-5 md:py-2.5 rounded-full font-bold text-xs md:text-sm hover:bg-emerald-700 transition-all hover:shadow-lg hover:shadow-emerald-200 active:scale-95 shadow-md border border-emerald-500/20 cursor-none shrink-0"
           >
             <MessageSquare size={14} className="md:w-4 md:h-4" fill="currentColor" />
-            {/* Using hidden/inline utilities to toggle text depending on device size */}
             <span className="inline md:hidden">Text Us</span>
             <span className="hidden md:inline">Text Us on WhatsApp</span>
           </a>
 
         </div>
+
+        {/* --- MOBILE DROPDOWN LINKS CONTAINER --- */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div 
+              className="md:hidden bg-white border-b border-emerald-100 flex flex-col font-bold text-emerald-950/90 divide-y divide-emerald-50"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link 
+                href="/" 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className="px-6 py-4 hover:bg-emerald-50/50 transition-colors cursor-none"
+              >
+                Home
+              </Link>
+              <Link 
+                href="/about" 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className="px-6 py-4 hover:bg-emerald-50/50 transition-colors cursor-none"
+              >
+                About Us
+              </Link>
+              <Link 
+                href="/services" 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className="px-6 py-4 hover:bg-emerald-50/50 transition-colors cursor-none"
+              >
+                Services & Results
+              </Link>
+              <button
+                onClick={openCinematic}
+                className="px-6 py-4 text-left font-black text-emerald-600 bg-emerald-50/30 hover:bg-emerald-50 transition-colors flex items-center gap-2 cursor-none w-full"
+              >
+                <Sparkles size={16} />
+                <span>Watch Behind the Scenes Reel</span>
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* --- IMMERSIVE OVERLAY PANEL --- */}
       <AnimatePresence>
-        {isOpen && (
+        {isCinematicOpen && (
           <motion.div 
             className="fixed inset-0 bg-emerald-950/95 backdrop-blur-xl z-[99999] p-6 md:p-12 flex flex-col justify-between overflow-y-auto"
             initial={{ opacity: 0, scale: 1.05 }}
@@ -97,7 +147,7 @@ export default function Navbar() {
                 <span>Behind the Scenes Experience</span>
               </div>
               <button 
-                onClick={closeOverlay}
+                onClick={closeCinematic}
                 className="p-3 bg-white/5 hover:bg-white/10 rounded-full transition-all text-white border border-white/10 flex items-center justify-center cursor-none group"
               >
                 <X size={28} className="group-hover:rotate-90 transition-transform duration-300" />
