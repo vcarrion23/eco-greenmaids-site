@@ -12,13 +12,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Track state for the cinematic overlay view
   const [isCinematicActive, setIsCinematicActive] = useState(false);
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  const springConfig = { stiffness: 600, damping: 40 };
+  const springConfig = { stiffness: 700, damping: 45 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -28,7 +27,6 @@ export default function RootLayout({
       cursorY.set(e.clientY - 5);
     };
 
-    // Listeners to dynamic switch colors based on navbar overlay actions
     const handleOverlayOpen = () => setIsCinematicActive(true);
     const handleOverlayClose = () => setIsCinematicActive(false);
 
@@ -44,10 +42,10 @@ export default function RootLayout({
   }, [cursorX, cursorY]);
 
   return (
-    <html lang="en" className="cursor-none select-none">
-      <body className={`${inter.className} cursor-none antialiased`}>
+    <html lang="en" className="md:cursor-none select-none scroll-smooth">
+      <body className={`${inter.className} md:cursor-none antialiased relative z-0 bg-white`}>
         
-        {/* --- SIMPLE SOLID DOT CURSOR WITH STATIC TRANSITIONS --- */}
+        {/* --- CUSTOM CURSOR LAYER (Guaranteed Non-Blocking) --- */}
         <motion.div
           className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none z-[999999] hidden md:block"
           style={{
@@ -55,11 +53,10 @@ export default function RootLayout({
             y: cursorYSpring,
           }}
           animate={{
-            // Turns bright crisp white on the dark reel panel, stays core emerald on white pages
             backgroundColor: isCinematicActive ? "#ffffff" : "#059669",
-            scale: isCinematicActive ? 1.4 : 1 // Slightly increases size for perfect high-contrast visibility
+            scale: isCinematicActive ? 1.5 : 1
           }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.15 }}
         />
 
         {children}

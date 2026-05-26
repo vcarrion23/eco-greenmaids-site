@@ -1,169 +1,115 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Image from "next/image";
-import { 
-  Truck, 
-  Sparkles, 
-  Hammer, 
-  CalendarCheck, 
-  Zap, 
-  MessageSquare,
-  CheckCircle2
-} from "lucide-react";
-
-const services = [
-  {
-    title: "Move-In / Move-Out",
-    desc: "A total deep-clean of every nook, cranny, and appliance to make your transition effortless.",
-    icon: <Truck size={32} />,
-  },
-  {
-    title: "Deep Cleaning",
-    desc: "An intensive scrub targeting built-up grime, baseboards, and hard-to-reach areas.",
-    icon: <Sparkles size={32} />,
-  },
-  {
-    title: "Post-Construction",
-    desc: "High-detail removal of fine dust and debris to make your new renovation live-in ready.",
-    icon: <Hammer size={32} />,
-  },
-  {
-    title: "Maintenance Schedule",
-    desc: "Consistent, recurring eco-cleans to keep your home healthy and sparkling year-round.",
-    icon: <CalendarCheck size={32} />,
-  },
-  {
-    title: "One-Time Service",
-    desc: "A professional, full-standard clean whenever you need a quick reset for your home.",
-    icon: <Zap size={32} />,
-  },
-];
-
-// Mapped exactly to your public folder filenames
-const results = [
-  {
-    title: "Kitchen Transformation",
-    before: "/kitchenbefore.png",
-    after: "/kicthenafter.png", // matches your 'kicthen' typo in public folder
-    tag: "Deep Clean"
-  },
-  {
-    title: "Floor Restoration",
-    before: "/floorbefore.png",
-    after: "/floorafter.png",
-    tag: "Post-Construction"
-  },
-  {
-    title: "Bathroom Deep Scrub",
-    before: "/bathroombefore.png",
-    after: "/bathroomafter.png",
-    tag: "Move-Out"
-  },
-];
+import ScrollAnimate from "@/components/ScrollAnimate";
+import { CheckCircle2, Sparkles, Sparkle, Trash2, Home, Key, MessageSquare } from "lucide-react";
 
 export default function ServicesPage() {
+  const services = [
+    {
+      title: "Routine Eco-Maintenance",
+      tagline: "Perfect for weekly, bi-weekly, or monthly upkeep.",
+      icon: <Home size={24} />,
+      bullets: [
+        "Dusting all high surfaces, fixtures & baseboards",
+        "Sanitizing counters, sinks & appliance exteriors",
+        "Complete HEPA-vacuuming & organic floor mopping",
+        "Polishing mirrors and emptying all trash basins"
+      ]
+    },
+    {
+      title: "Signature Organic Deep Clean",
+      tagline: "A structural reboot for immaculate fresh starts.",
+      icon: <Trash2 size={24} />,
+      bullets: [
+        "Scrubbing interior grout lines and detailed shower glass scaling",
+        "Hand-wiping window sills, blinds, door frames & trim moldings",
+        "Deep kitchen degreasing including stovetops & backsplash panels",
+        "Full dust extraction behind accessible furniture frames"
+      ]
+    },
+    {
+      title: "Move-In / Move-Out Turnkey",
+      tagline: "A total comprehensive cleaning to transition spaces flawlessly.",
+      icon: <Key size={24} />,
+      bullets: [
+        "Deep interior cleaning of all empty cabinets, drawers & pantries",
+        "Sanitizing inside major appliances (Oven, Fridge, Freezer)",
+        "Removing wall scuffs, baseboard marks & threshold residue",
+        "Full micro-particle vacuum extraction across all bare square footage"
+      ]
+    }
+  ];
+
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white text-emerald-950">
       <Navbar />
 
-      {/* --- HEADER --- */}
       <section className="bg-emerald-950 py-16 text-center text-white">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight italic">Services & Results</h1>
-          <p className="text-emerald-100/70 text-lg max-w-xl mx-auto font-medium">
-            Professional eco-friendly cleaning tailored to your needs.
+          <p className="text-emerald-100/70 text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+            Premium, plant-based clinical procedures meticulously tailored to protect your indoor climate.
           </p>
         </div>
       </section>
 
-      {/* --- SERVICES GRID --- */}
-      <section className="py-20 container mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="p-8 border border-emerald-50 rounded-3xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full group"
-            >
-              <div className="mb-6 w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all">
-                {service.icon}
-              </div>
-              <h3 className="text-2xl font-bold text-emerald-900 mb-3">{service.title}</h3>
-              <p className="text-emerald-800/70 leading-relaxed mb-8 flex-grow">{service.desc}</p>
-              
-              {/* Individual WhatsApp Button Per Service */}
-              <a 
-                href={`https://wa.me/19145641364?text=Hi%20EcoGreenMaids!%20I'd%20like%20to%20book%20a%20${encodeURIComponent(service.title)}%20cleaning.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 active:scale-95 shadow-md"
-              >
-                <MessageSquare size={18} fill="currentColor" />
-                Text to Book
-              </a>
-            </div>
-          ))}
-        </div>
-
-        {/* --- BEFORE & AFTER GALLERY --- */}
-        <div className="border-t border-emerald-100 pt-20">
-          <div className="flex flex-col items-center text-center mb-12">
-            <div className="flex items-center gap-2 text-emerald-600 font-bold uppercase tracking-widest text-xs mb-3">
-              <Sparkles size={16} />
-              <span>Real Work</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-emerald-950 tracking-tight">See The Difference</h2>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {results.map((item, index) => (
-              <div key={index} className="flex flex-col group">
-                <div className="relative h-72 md:h-80 rounded-3xl overflow-hidden shadow-lg flex">
-                  {/* Before Side */}
-                  <div className="relative w-1/2 h-full border-r border-white/40">
-                    <Image 
-                        src={item.before} 
-                        alt="Before" 
-                        fill 
-                        className="object-cover grayscale-[30%]" 
-                        unoptimized
-                    />
-                    <div className="absolute top-3 left-3 bg-black/40 backdrop-blur-md text-white text-[9px] px-2 py-1 rounded font-bold uppercase tracking-wider">Before</div>
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="flex flex-col gap-12">
+            {services.map((srv, index) => (
+              <ScrollAnimate key={index} delay={index * 0.1}>
+                <div className="bg-white rounded-[2.5rem] border border-emerald-100 shadow-xl hover:shadow-2xl hover:border-emerald-200 transition-all duration-500 overflow-hidden grid md:grid-cols-12">
+                  <div className="md:col-span-4 bg-gradient-to-br from-emerald-900 to-emerald-950 p-8 text-white flex flex-col justify-between relative">
+                    <div className="absolute right-0 top-0 text-emerald-800/20 pointer-events-none translate-x-4 translate-y-4 scale-150">{srv.icon}</div>
+                    <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl flex items-center justify-center mb-6">{srv.icon}</div>
+                    <div>
+                      <h3 className="text-2xl font-black tracking-tight leading-tight mb-2">{srv.title}</h3>
+                      <p className="text-emerald-200/70 font-medium text-xs md:text-sm">{srv.tagline}</p>
+                    </div>
                   </div>
-                  {/* After Side */}
-                  <div className="relative w-1/2 h-full">
-                    <Image 
-                        src={item.after} 
-                        alt="After" 
-                        fill 
-                        className="object-cover" 
-                        unoptimized
-                    />
-                    <div className="absolute top-3 right-3 bg-emerald-600 text-white text-[9px] px-2 py-1 rounded font-bold uppercase tracking-wider shadow-md">After</div>
+                  <div className="md:col-span-8 p-8 md:p-10 flex flex-col justify-center bg-emerald-50/10">
+                    <div className="flex items-center gap-1.5 text-emerald-600 font-bold uppercase tracking-widest text-[10px] mb-4">
+                      <Sparkle size={12} fill="currentColor" />
+                      <span>What's Included in the Procedure</span>
+                    </div>
+                    <div className="grid gap-3.5">
+                      {srv.bullets.map((bullet, bIdx) => (
+                        <div key={bIdx} className="flex items-start gap-3">
+                          <CheckCircle2 size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                          <span className="font-bold text-emerald-900/80 text-sm md:text-base leading-tight">{bullet}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <div className="mt-4 flex justify-between items-center px-2">
-                  <span className="font-bold text-emerald-900">{item.title}</span>
-                  <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded uppercase">{item.tag}</span>
-                </div>
-              </div>
+              </ScrollAnimate>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- FINAL CALL TO ACTION --- */}
-      <section className="bg-emerald-50 py-16 mb-20 mx-6 rounded-[3rem] text-center border border-emerald-100 flex flex-col items-center justify-center p-6">
-        <h2 className="text-3xl font-bold text-emerald-950 mb-2 tracking-tight">Ready for your transformation?</h2>
-        <p className="text-emerald-800/60 font-semibold mb-6 max-w-sm text-sm">Send us a text with your timeline or home details for an instant quote.</p>
-        <a 
-          href="https://wa.me/19145641364?text=Hi%20EcoGreenMaids!%20I'm%20ready%20to%20schedule%20a%20clean%20and%20transform%20my%20space." 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 bg-emerald-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-emerald-700 transition-all shadow-xl active:scale-95"
-        >
-          <MessageSquare size={22} fill="currentColor" />
-          Message to Schedule
-        </a>
+      <section className="pb-24 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <ScrollAnimate>
+            <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-[2.5rem] border border-emerald-200/50 p-8 md:p-12 text-center flex flex-col items-center gap-6 max-w-3xl mx-auto shadow-sm">
+              <div className="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-emerald-600 border border-emerald-200/60 shadow-xs">
+                <Sparkles size={14} />
+                <span>Custom Premium Estimates</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-black tracking-tight text-emerald-950 max-w-xl">
+                Need a tailored operational routine or custom square footage quote?
+              </h3>
+              <p className="text-emerald-900/70 font-medium text-sm md:text-base max-w-md leading-relaxed">
+                Send over your home layout constraints via text, and we will set up a clear quote package immediately.
+              </p>
+              <div className="w-full sm:w-auto">
+                <a href="tel:19145641364" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-900/10 transition-all active:scale-95 cursor-none text-base">
+                  <MessageSquare size={18} fill="currentColor" /> Text to Coordinate Now
+                </a>
+              </div>
+            </div>
+          </ScrollAnimate>
+        </div>
       </section>
 
       <Footer />
