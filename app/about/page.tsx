@@ -14,7 +14,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight italic">Our Mission</h1>
           <p className="text-emerald-100/70 text-lg max-w-2xl mx-auto font-medium leading-relaxed">
-            Delivering premium, clinical-grade cleaning for Westchester homes using 100% organic methods.
+            Delivering premium, clinical-grade cleaning for Westchester homes.
           </p>
         </div>
       </section>
@@ -59,7 +59,7 @@ export default function AboutPage() {
 
                 <div className="grid gap-4 mt-2">
                   {[
-                    "Trained & Background-Checked Cleaners",
+                    "Trained Cleaners",
                     "HEPA-Filtration Vacuums",
                     "100% Satisfaction Guarantee"
                   ].map((item, i) => (
