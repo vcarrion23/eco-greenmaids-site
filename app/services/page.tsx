@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollAnimate from "@/components/ScrollAnimate";
-import { CheckCircle2, Sparkles, Sparkle, Trash2, Home, Key, MessageSquare } from "lucide-react";
+import CustomQuoteForm from "@/components/CustomQuoteForm";
+import { CheckCircle2, Sparkles, Sparkle, Trash2, Home, Key } from "lucide-react";
 
 export default function ServicesPage() {
   const services = [
@@ -88,29 +89,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="pb-24 bg-white">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <ScrollAnimate>
-            <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-[2.5rem] border border-emerald-200/50 p-8 md:p-12 text-center flex flex-col items-center gap-6 max-w-3xl mx-auto shadow-sm">
-              <div className="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-emerald-600 border border-emerald-200/60 shadow-xs">
-                <Sparkles size={14} />
-                <span>Custom Premium Estimates</span>
-              </div>
-              <h3 className="text-2xl md:text-3xl font-black tracking-tight text-emerald-950 max-w-xl">
-                Need a tailored operational routine or custom square footage quote?
-              </h3>
-              <p className="text-emerald-900/70 font-medium text-sm md:text-base max-w-md leading-relaxed">
-                Send over your home layout constraints via text, and we will set up a clear quote package immediately.
-              </p>
-              <div className="w-full sm:w-auto">
-                <a href="sms:+19145641364" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-900/10 transition-all active:scale-95 cursor-none text-base">
-                  <MessageSquare size={18} fill="currentColor" /> Text to Coordinate Now
-                </a>
-              </div>
-            </div>
-          </ScrollAnimate>
-        </div>
-      </section>
+      <CustomQuoteForm />
 
       <Footer />
     </main>
